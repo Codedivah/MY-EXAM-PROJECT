@@ -19,7 +19,7 @@ const CustomHook = () => {
       </div>
       <h1>Custom Hook with Use Reducer.</h1>
       <div className="card">
-        <button  onClick={()=>{dispatch({type:"increment"})}} >
+        <button  className="btn1 incr"onClick={()=>{dispatch({type:"increment"})}} >
           +
         </button>
         <input
@@ -30,8 +30,15 @@ const CustomHook = () => {
           
         />
         <button className="btn1 set" onClick={()=> dispatch({type: "set",payload:+value})}>Set</button>
-        <button onClick={()=>{dispatch({type:"decrement"})}} disabled={count===1}> 
+
+        <button className="btn1 decr" onClick={()=>{dispatch({type:"decrement"})}} disabled={count===1}> 
           -
+        </button>
+        <button
+          className="btn1 res"
+          onClick={() => dispatch({ type: "reset" })}
+        >
+          Reset
         </button>
       </div>
       </div>
