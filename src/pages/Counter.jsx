@@ -1,10 +1,10 @@
 import { useReducer, useState } from "react";
-import useCounter from "../Hooks/useCounter";
+// import useCounter from "../Hooks/useCounter";
 import reducer from "../Components/reducer";
 
 const Counter = () => {
   const [state, dispatch]=useReducer(reducer, 1);
-  const[value,setValue]=useState("")
+  const[value,setValue]=useState(1)
 
   return (
     <>
@@ -36,7 +36,10 @@ const Counter = () => {
         </button>
         <button
           className="btn1 res"
-          onClick={() => dispatch({ type: "reset" })}
+          onClick={() => {dispatch({ type: "reset" })
+        setValue(1)
+        
+        }}
         >
           Reset
         </button>

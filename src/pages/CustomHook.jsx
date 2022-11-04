@@ -1,46 +1,60 @@
-import React, { useState } from "react";
-import reactLogo from "../assets/react.svg"
-import reducer from "../Components/reducer";
-import useCounter from "../Hooks/useCounter";
+import React, { useCallback, useState } from "react";
+import reactLogo from "../assets/react.svg";
+
+const useCounter = (initialCount) => {
+  const [count, setCount] = useState(initialCount);
+  const handlechange = useCallback(({ target: { value } }) => {
+    setCount(value);
+  }, []);
+
+  return {
+    value: count,
+    increment: () => setCount((prevCount) => prevCount + 1),
+    decrement: () => setCount((prevCount) => prevCount - 1),
+    reset: () => setCount(initialCount),
+
+    handlechange: handlechange,
+  };
+};
+
 const CustomHook = () => {
-  const [count, dispatch]=useCounter(reducer,1)
-  const[value,setValue] = useState("")
+  const counter = useCounter(1);
+  const [value, setValue] = useState(1);
   return (
     <section className="App">
       <div>
-      <div>
-        <a  className="imglink" href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <span>{count}</span>
-        <a className="imglink" href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Custom Hook with Use Reducer.</h1>
-      <div className="card">
-        <button  className="btn1 incr"onClick={()=>{dispatch({type:"increment"})}} >
-          +
-        </button>
-        <input
-          className="input"
-          type="text"
-          value={value}
-       onChange={(e)=>setValue(e.target.value)}
-          
-        />
-        <button className="btn1 set" onClick={()=> dispatch({type: "set",payload:+value})}>Set</button>
+        <div>
+          <a className="imglink" href="https://vitejs.dev" target="_blank">
+            <img src="/vite.svg" className="logo" alt="Vite logo" />
+          </a>
+          <span>{counter.value}</span>
+          <a className="imglink" href="https://reactjs.org" target="_blank">
+            <img src={reactLogo} className="logo react" alt="React logo" />
+          </a>
+        </div>
+        <h1>Custom Hook with Use Reducer.</h1>
+        <div className="card">
+          <button className="btn1 incr" onClick={counter.increment}>
+            +
+          </button>
+          <input
+            className="input"
+            type="text"
+            value={counter.value}
+            onChange={counter.handlechange}
+          />
 
-        <button className="btn1 decr" onClick={()=>{dispatch({type:"decrement"})}} disabled={count===1}> 
-          -
-        </button>
-        <button
-          className="btn1 res"
-          onClick={() => dispatch({ type: "reset" })}
-        >
-          Reset
-        </button>
-      </div>
+          <button
+            className="btn1 decr"
+            onClick={counter.decrement}
+            disabled={counter.value === 1}
+          >
+            -
+          </button>
+          <button className="btn1 res" onClick={counter.reset}>
+            Reset
+          </button>
+        </div>
       </div>
     </section>
   );
