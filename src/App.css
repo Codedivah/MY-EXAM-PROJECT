@@ -70,12 +70,25 @@ section{
 .view {
   background-color: purple;
   color: white;
+  transition: all 0.2s ease;
+
+  
 }
+
+.view:active{
+  transform: scale(0.9);
+  
+  }
+
+  .cont:active{
+    transform: scale(0.9);
+  }
 
 .cont,
 .res {
   border: purple 1px solid;
   color: purple;
+  transition: all 0.2s ease;
 }
 
 .cart {

@@ -12,7 +12,7 @@ function reducer(state,action) {
         case "set":
           return state= action.payload;
       default:
-      throw new Error("something went wrong")
+      return state
   };
    
 }

@@ -41,10 +41,10 @@ const Counter = () => {
           Reset
         </button>
         <p>
-          <button className="btn cont" onClick={() => dispatch("continue")}>
+          <button className="btn cont" >
             CONTINUE SHOPPING
           </button>
-          <button className="btn view" onClick={() => dispatch("view")}>
+          <button className="btn view" >
             VIEW CART AND CHECK OUT
           </button>
         </p>
