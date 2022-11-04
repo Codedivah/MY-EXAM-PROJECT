@@ -18,7 +18,7 @@ const Counter = () => {
           onClick={() => dispatch({ type: "decrement" })}
           disabled={state === 1}
         >
-          _
+          -
         </button>
         <input
           className="input"
