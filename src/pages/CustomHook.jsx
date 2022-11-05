@@ -18,8 +18,8 @@ const useCounter = (initialCount) => {
 };
 
 const CustomHook = () => {
-  const counter = useCounter(1);
-  const [value, setValue] = useState(1);
+  const counter = useCounter(0);
+  const [value, setValue] = useState(0);
   return (
     <section className="App">
       <div>
@@ -47,7 +47,7 @@ const CustomHook = () => {
           <button
             className="btn1 decr"
             onClick={counter.decrement}
-            disabled={counter.value === 1}
+            disabled={counter.value === 0}
           >
             -
           </button>

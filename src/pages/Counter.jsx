@@ -3,8 +3,8 @@ import { useReducer, useState } from "react";
 import reducer from "../Components/reducer";
 
 const Counter = () => {
-  const [state, dispatch]=useReducer(reducer, 1);
-  const[value,setValue]=useState(1)
+  const [state, dispatch]=useReducer(reducer, 0);
+  const[value,setValue]=useState(0)
 
   return (
     <>
@@ -16,7 +16,7 @@ const Counter = () => {
         <button
           className="btn1 decr"
           onClick={() => dispatch({ type: "decrement" })}
-          disabled={state === 1}
+          disabled={state === 0}
         >
           -
         </button>
