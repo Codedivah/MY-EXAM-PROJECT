@@ -1,10 +1,16 @@
-import React from 'react'
+import { useState } from "react";
 
-function Boundary() {
-    const name={type:Fatimah}
+const ErrorBoundaryTest = () => {
+  const [error, setError] = useState(false);
+
+  if (error) {
+    throw Error("something went wrong");
+  }
   return (
-    <div>{name}</div>
-  )
-}
+    <div>
+      <button onClick={() => setError(true)}>Test Error</button>
+    </div>
+  );
+};
 
-export default Boundary
+export default ErrorBoundaryTest;
